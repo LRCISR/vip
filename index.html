@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LRC · ערב VIP ביקב</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Rubik:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: one centered column (max 600px). Dark "evening" hero like an engraved invitation card, then cream sections: the evening, the program, registration. */
+:root{
+  --night:#16151E; --night-2:#211F2C; --plum:#5C5878; --plum-2:#726C98;
+  --gold:#C9AD78; --gold-soft:#E6D6B3; --gold-ink:#8C6F3E;
+  --paper:#F5F1EA; --card:#FFFFFF; --ink:#262433; --muted:#6A6577; --line:#E3DCCF; --err:#A8321F;
+  --serif:'Frank Ruhl Libre','David Libre',Georgia,serif; --sans:'Rubik',Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.col{max-width:600px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+
+/* hero */
+.hero{background:radial-gradient(120% 80% at 50% 0%, #2A2738 0%, var(--night) 62%);color:#F3EEE6;padding-block:28px 46px;position:relative;overflow:hidden}
+.frame{border:1px solid rgba(201,173,120,.55);padding:34px 22px 38px;position:relative;text-align:center}
+.frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(201,173,120,.22);pointer-events:none}
+.logo{display:inline-flex;align-items:center;gap:9px;direction:ltr}
+.logo svg{width:30px;height:auto}
+.logo .w{display:flex;flex-direction:column;text-align:left;line-height:1}
+.logo b{font-weight:600;font-size:27px;letter-spacing:.5px;color:#fff}
+.logo small{font-weight:300;font-size:8.5px;letter-spacing:1.6px;color:var(--gold);margin-top:4px}
+.kicker{margin-top:26px;font-size:13px;letter-spacing:1.5px;color:var(--gold)}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,9.4vw,50px);line-height:1.12;margin:14px 0 0;text-wrap:balance;color:#fff}
+h1 em{font-style:normal;color:var(--gold-soft)}
+.sub{margin:16px auto 0;max-width:30ch;color:#CFC8D8;font-size:16.5px;font-weight:300}
+.facts{margin:28px auto 0;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;max-width:430px}
+.fact{display:flex;flex-direction:column;gap:2px}
+.fact .k{font-size:11px;letter-spacing:2px;color:var(--gold)}
+.fact .v{font-family:var(--serif);font-size:20px;color:#fff;white-space:nowrap}
+.sep{width:1px;height:34px;background:rgba(201,173,120,.45)}
+.cta{display:inline-block;margin-top:30px;background:var(--gold);color:var(--night);text-decoration:none;font-weight:600;font-size:17px;padding:14px 34px;border-radius:999px;transition:background .2s}
+.cta:hover,.cta:focus-visible{background:var(--gold-soft)}
+.cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.scarce{margin-top:12px;font-size:13px;color:#A9A2B5}
+
+/* sections */
+section{padding-block:44px 8px}
+.eyebrow{font-size:13px;letter-spacing:1.2px;color:var(--gold-ink);font-weight:500}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,7vw,34px);line-height:1.2;margin:6px 0 14px;text-wrap:balance}
+.lead{margin:0;color:#3E3A4B;font-size:17px}
+.lead+.lead{margin-top:12px}
+.perks{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.perk{background:var(--card);border:1px solid var(--line);padding:16px 16px 15px}
+.perk b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.25}
+.perk span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+
+.prog{list-style:none;padding:0;margin:6px 0 0;border-top:1px solid var(--line)}
+.prog li{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.prog time{font-family:var(--serif);font-size:20px;color:var(--gold-ink);font-variant-numeric:tabular-nums;direction:ltr;text-align:right}
+.prog .t{font-weight:500;font-size:17px}
+.prog .d{font-size:14.5px;color:var(--muted)}
+.prog li.key .t{font-family:var(--serif);font-size:20px;font-weight:500}
+
+
+.spk{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:14px}
+.spk li{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);padding:12px}
+.spk img{width:92px;height:92px;object-fit:cover;display:block;outline:1px solid var(--gold);outline-offset:3px}
+.spk b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.2}
+.spk i{display:block;font-style:normal;font-family:var(--serif);font-size:16.5px;line-height:1.4;color:var(--gold-ink);margin-top:7px}
+.spk span{display:block;font-size:14.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+/* form */
+.reg{padding-block:46px 30px}
+.card{background:var(--card);border-top:3px solid var(--gold);padding:26px 20px 26px;box-shadow:0 1px 0 var(--line)}
+form{display:flex;flex-direction:column;gap:16px;margin-top:18px}
+.field{display:flex;flex-direction:column;gap:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label,.legend{font-weight:500;font-size:15px}
+.opt{font-weight:300;color:var(--muted);font-size:13px}
+input[type=text],input[type=tel],input[type=email]{font:inherit;font-size:17px;padding:12px 13px;border:1.5px solid #D6CFC2;background:#FCFBF8;border-radius:0;color:var(--ink);width:100%;min-width:0}
+input:focus{outline:none;border-color:var(--plum);background:#fff;box-shadow:0 0 0 3px rgba(92,88,120,.15)}
+.help{font-size:13px;color:var(--muted)}
+.err{font-size:13px;color:var(--err)}
+.bad input{border-color:var(--err)}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label{display:flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid #D6CFC2;padding:13px;font-weight:500;cursor:pointer;background:#FCFBF8;transition:all .15s}
+.choice input:checked+label{border-color:var(--plum);background:var(--plum);color:#fff}
+.choice input:focus-visible+label{box-shadow:0 0 0 3px rgba(92,88,120,.3)}
+.plus{border-inline-start:3px solid var(--gold);padding-inline-start:14px;display:flex;flex-direction:column;gap:14px;animation:open .25s ease}
+@keyframes open{from{opacity:.4;transform:translateY(-4px)}to{opacity:1;transform:none}}
+button[type=submit]{font:inherit;font-weight:600;font-size:18px;background:var(--night);color:#fff;border:0;padding:16px;cursor:pointer;margin-top:4px;transition:background .2s}
+button[type=submit]:hover{background:var(--plum)}
+button[type=submit]:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+button[disabled]{opacity:.6;cursor:wait}
+.fine{font-size:12.5px;color:var(--muted);text-align:center;margin:0}
+.formerr{background:#FBEDEA;color:var(--err);padding:10px 12px;font-size:14px}
+
+/* thanks */
+.thanks{text-align:center;padding:34px 20px 30px}
+.thanks .glass{width:46px;height:auto}
+.thanks h2{margin-top:12px}
+.thanks p{margin:0 auto;max-width:34ch;color:#3E3A4B}
+.acts{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.btn{display:block;text-decoration:none;font-weight:500;padding:13px;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:600}
+.friend{margin-top:24px;background:var(--paper);padding:18px 16px;text-align:center}
+.friend b{font-family:var(--serif);font-size:20px;font-weight:500}
+.friend p{font-size:14.5px;margin:6px auto 12px}
+
+footer{padding-block:30px 40px;text-align:center;color:var(--muted);font-size:13px}
+footer .tag{font-family:var(--serif);font-size:19px;color:var(--plum)}
+@media (max-width:420px){.perks{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="col">
+    <div class="frame">
+      <div class="logo" aria-label="LRC Long Range Capital">
+        <svg viewBox="170 60 240 275" aria-hidden="true"><path fill="#C9AD78" d="M300,70 C 300,150 330,220 395,265 C 405,190 380,110 300,70 Z"/><path fill="#E6D6B3" d="M175,240 C 260,215 340,245 380,305 C 300,335 220,310 175,240 Z"/></svg>
+        <div class="w"><b>LRC</b><small>LONG RANGE CAPITAL</small></div>
+      </div>
+      <div class="kicker">הזמנה אישית · ערב VIP</div>
+      <h1>בואו נדבר על כסף.<br><em>עם כוס יין ביד.</em></h1>
+      <p class="sub">ערב סגור ללקוחות ולחברים של LRC, ביקב בנימינה. אוכל טוב, יין טוב, ואנשים שכדאי לשמוע.</p>
+      <div class="facts">
+        <div class="fact"><span class="k">מתי</span><span class="v">חמישי 17.12</span></div>
+        <span class="sep" aria-hidden="true"></span>
+        <div class="fact"><span class="k">שעה</span><span class="v">17:45</span></div>
+        <span class="sep" aria-hidden="true"></span>
+        <div class="fact"><span class="k">איפה</span><span class="v" id="placeShort">יקב בנימינה</span></div>
+      </div>
+      <a class="cta" href="#register" id="goReg" target="_self">אני מגיע/ה</a>
+      <div class="scarce">מספר המקומות מוגבל · ההגעה באישור מראש</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="col">
+    <div class="eyebrow">הערב</div>
+    <h2>לא עוד כנס. ערב.</h2>
+    <p class="lead">בלי שקפים עמוסים ובלי ז׳רגון. מגיעים, מרימים כוסית, פוגשים אנשים מעניינים, ושומעים שלושה מרצים אורחים שמדברים על השקעות כמו שמדברים עליהן בין חברים.</p>
+    <p class="lead">בסוף הערב יואב מרקוביץ׳ יראה איך כל זה מתחבר לתוכנית כלכלית אחת, ושולח אתכם הביתה עם חלה לשבת.</p>
+    <ul class="perks">
+      <li class="perk"><b>ארוחת ערב ויין חופשי</b><span>באווירה של יקב</span></li>
+      <li class="perk"><b>שלושה מרצים אורחים</b><span>אמיר כהנוביץ, ערן מועלם, אתי בר-לב</span></li>
+      <li class="perk"><b>עמדת צילום</b><span>שטיח אדום, כי מגיע לכם</span></li>
+      <li class="perk"><b>חלה לשבת</b><span>יוצאים הביתה עם משהו טוב</span></li>
+    </ul>
+  </section>
+
+  <section class="col">
+    <div class="eyebrow">המרצים</div>
+    <h2>שלושה אנשים שכדאי לשמוע</h2>
+    <ul class="spk"><li><img src="data:image/webp;base64,UklGRrwIAABXRUJQVlA4ILAIAADQOwCdASq4ALgAPpVGnkmlpCMiKLYquLASiWdu4EO9HFL1JKwBOqn7z+S8ptv90M5mLGnkCmOIOLV0JxbMSBKO8yBz5EWIzmPwxr07d605+EfZqSCZQNvShRxxKqRqls0iSMOAe/BlaB3LvS54DD3I67z60UB/KLRnrY7me257qRpqcGqqmPjRgtfUQsYJYxiMNlDFctNfxqGGOcm6VDs5ZQI+hFjTm/c0KTZTfLZkxlzQv2+E/iEFoAatWsaktKilL5bHzF0WAbZSL9J+x9Ql5BSPzhh7qO/jFbtAaMbQq7xC2Xd364ALbwDuW6hHmtujIegT1KRt+LalLZIqfnAKzjYfdiZ/5DYDZu0umkf3YmvJDG8t+mpH20gniRJGNc+C1p4qbeymwcZaSFpvu2dDzAY0EN4OVLik2yYd8tkTeHFQUJYyzpYWuS68dF57hDAfGgq9yp5lfAQyHvPo/uJcv/g62QJRgtydLrwS2JrJa62EMIgC/Rsh56WFyfyA075wFYOArkZDLNL+umi/YkN5yOsRXTaG6pUCr2NM4GlIpXtckwCFRQswyH4ZvIWtRtvEtaT7mAGsgN3UjKuKcz7HlJ/WfpFUds/GMLb36km8sIcppEYcrwU8XvS7yxEi82aSuML2j4MgAP7to05DwEeKFDAxwu8TkhCCD2Y+etnDb8CK5/tJqm8ZY/0QmaG2aR4IRs7/u5cozvFbnRKFjZhaUcU5GnRFsa9hN9ngICKVxIX7fSy+KEV8+F1nHXy6B0BFPg3XB3d9reXe+0CzpPRMFkaxUibOQV4e5TG0AbUPTzP1sfRyqvE5eajCqtkDBm3Y1hy6Y1RUEBPVQE2YnZhO+gZAcoY+mMPQQkjyrx5MymHkgtLYxiPyXpBOzNTyblN+2oHyfMkpgh+H5On4XQPLmJFiPKbnGW4cBfUIgPteY8xZVaT6JA3vBypDTfIe8wnkze7UgcPDcnrMMnwU1cQMRB1OVsCbeGbCyKUaOIrhZ1AWFxBcN7Yt1VFpcJ+TFRrM5KzVtVGdfXPaa5Tnj8tKRmQ7RVXbTo/6+tAe3oekLo6LhC5uOtEApYTeyAyPtgaTQ5WSkY0y2Dg87dyq9agDhhQj2TF1LoSyqejSj89Mg7JVZkaAa48EGvU+7oArnGsv5MRq2rnbWMIFQAGRTCo5PY0X0v7njIDHWDmjhX3F76jlLMpEqLfa6VeLoNTI/ZtMdmgChZB0eIpEMoYEWXPPR7PZYZDO7rdT7UzVRsyAUOWgD6fdZA2ueEvopItOwq3gpOamg5SUYiYIll9dgQXsZfVOCI9M1NDRv8D6A3FGj+jcwfmN9Z5C8msyzik9WxPVSh4YYsNLZT701c8qllAoD0vMo7odzwE0JrfYtDHjaWC+FM3ZlzB7i0Rti2gATeCyFp1kgA8M9cUTOdZvElrSou/XB+h8g1ZP4GPIzbndoatdbolnMdoK/fYD7WnvrT7obTnmk9lAeY914Q9esce6S/+Xigh7MMWOqW/F7wgM+5qGso2pEuxMGP0ewLyjtLaVi87/rNoKNhPoV8DWdcH2zLMlPeupzm5Bro8TNa0IWpuEmvYxs+Rt0WMPG8WVEtkc+7wcuJddksH8zE78bEHoFDOWT92aKGdKRZzi6RFyG8tPRsfMiAH5avvyeUx7y/R8ACJRj1oxx0ykq7IxexBBl7yHka98QAIj71opsiHnnG18Jzl1wNohO7sDXaJmAeuFVoLsU6q1nr2f19dd4CLaf51A3R093Bk/7IcPXZOXhUK5ohsfQSvGRnfHfw4T9vexQ1l+bSA2w2CicW4ol5rU4433ICoIkHIK0fxEq3sRstgKJvS0Mbv+RsWNYhX+eCrvseIhLBpOme1NT1F1YnKYwTa31ZsPrGgDN8+qSXv4T+qqgD/US0A1O7fmhX/CkAoVTBclncHZoyNCSz95N1VZfIMxcS5Vo2KAbIgjvqC0rg2I1skGCUZNQEHqDsWK6wfD816N9YKpsxEHzC6Ukc+b9HxunNQPgtzCbSDW1iwfgNHmCj8C2pdGN1vwS+j4kiZ7Hhn9XfBf0f1Zido55pZu4Yc0ozw2QEptBnNorj7bFg0b9IL9P2AmtOgqEh1kxQ1mRAgZtNBnXI2wiI3L4ZNzMrrN1ZlUV5EpMdgdPfaHlfXWJNjwxpU93sIuecBdResR83gqMFrXuxyRdbzaPeArBuRF9v7zW855nQPp+3X0Sp6ZmdTBCbWGi/7YlZiXLfx6QS2ypUCYI9eTlMtRER+55GV/eNxVTF3fnCtQb+OAFKjMvSafv4SGeAZS9GcD8j22+pLGLBjVacGk0bwUBElI5DnQKFod1Mi6uyo4Hqq05L4VlIxZJTWlWQ0F/ZNDbcxMNqzi5FB1WJM4b0XOGntl+TvSSpY0ZuHJVEZH4WRp62CwsHO2aI98MhLnUx91fMhYECLm5UfyjGPfpI+sv9q3KpNtHTLLop8ZnYp62L+gBiBT66ZYIaYZTQa06BWyoa07C4RCC2zykJpAF/Tus4wxPooNKDZqFzAa/r7t5NBnbNtH5dr+ZngP9HhLthA1/ftdDIdBR9CWgtpzf5BkpNE0aAWiJnINTZt66Q9xE7ceD/ydovJdgwMcTaY6Fs5BMJTMMKWLK+WrbIloPk88HzGYRGZ98DXDvwBystJ4NpRl33KwuDlITw94sVsJO5NeM0Jzh76jirGjrJnafCvY6xK3jcjOsQqKVkV+RCC2VE9sMTEv4wEYKWU1O1mniDkNv9AjjWI5RbB/H6zRGHWh0tNm54ygqj6spT9khBM8YOQ1tq0cr+FQaPg/JsFpcvi9o+VrJ2FIWHJkjHt0qmMK1Ycp4wPBf25JKEo/ZTpyOu90RPtUwPyMKq/7LjUR9SMPU7DwjczAS8kPG7OVWAOLskb3hk1gj6kYNLbj3WnhfFBiTsZD277xQLSLyzwjQVMQ1jvHGOceXbcu9B3bpGr56AAA" alt="אמיר כהנוביץ" width="92" height="92"><div><b>אמיר כהנוביץ</b><span>משנה למנכ״ל וכלכלן ראשי, קבוצת הפיננסים פרופיט</span><i>״חסינות לתיק ההשקעות על רקע אי‑ודאות פוליטית וזעזועים טכנולוגיים״</i></div></li><li><img src="data:image/webp;base64,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" alt="ערן מועלם" width="92" height="92"><div><b>ערן מועלם</b><span>מנכ״ל טל אסף ניהול ותכנון פרויקטים. מהנדס אזרחי, תואר ראשון ושני מהטכניון</span><i>״מקרקע לערך: איפה מסתתרות ההזדמנויות בעולם הקרקעות והתכנון״</i></div></li><li><img src="data:image/webp;base64,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" alt="אתי בר-לב" width="92" height="92"><div><b>אתי בר-לב</b><span>השקעות נדל״ן, יזמות ושותפויות אסטרטגיות בקפריסין</span></div></li></ul>
+  </section>
+
+  <section class="col">
+    <div class="eyebrow">סדר הערב</div>
+    <h2>יום חמישי, 17 בדצמבר</h2>
+    <ol class="prog">
+      <li><time>17:45</time><div><div class="t">התכנסות ומינגלינג</div><div class="d">ארוחת ערב ויין חופשי</div></div></li>
+      <li><time>18:45</time><div><div class="t">דברי פתיחה</div><div class="d">מייסדי LRC</div></div></li>
+      <li class="key"><time>18:50</time><div><div class="t">אמיר כהנוביץ</div><div class="d">חסינות לתיק ההשקעות על רקע אי‑ודאות פוליטית וזעזועים טכנולוגיים</div></div></li>
+      <li class="key"><time>19:15</time><div><div class="t">ערן מועלם</div><div class="d">מקרקע לערך: איפה מסתתרות ההזדמנויות בעולם הקרקעות והתכנון</div></div></li>
+      <li class="key"><time>19:45</time><div><div class="t">אתי בר-לב</div><div class="d">השקעות נדל״ן בקפריסין</div></div></li>
+      <li class="key"><time>20:15</time><div><div class="t">יואב מרקוביץ׳</div><div class="d">סוגרים עם תוכנית כלכלית</div></div></li>
+      <li><time>20:45</time><div><div class="t">קינוחים ושבת שלום</div><div class="d">וחלה לשבת לכל משפחה</div></div></li>
+    </ol>
+  </section>
+
+  <section class="col reg" id="register">
+    <div class="card" id="formCard">
+      <div class="eyebrow">אישור הגעה</div>
+      <h2 style="margin-bottom:4px">שומרים לך מקום</h2>
+      <p class="help" style="margin:0">ממלאים פעם אחת, ותקבל/י אישור למייל עם כל הפרטים.</p>
+      <form id="f" novalidate>
+        <div class="field" id="w_name">
+          <label for="full_name">שם מלא</label>
+          <input type="text" id="full_name" name="full_name" autocomplete="name" required>
+          <div class="err" hidden>נא למלא שם מלא</div>
+        </div>
+        <div class="row2">
+          <div class="field" id="w_phone">
+            <label for="phone">טלפון נייד</label>
+            <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" required>
+            <div class="err" hidden>מספר נייד לא תקין</div>
+          </div>
+          <div class="field" id="w_email">
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" autocomplete="email" dir="ltr" style="text-align:right" required>
+            <div class="err" hidden>כתובת מייל לא תקינה</div>
+          </div>
+        </div>
+        <div class="field">
+          <span class="legend" id="plusLbl">מגיע/ה עם בן/בת זוג?</span>
+          <div class="choice" role="radiogroup" aria-labelledby="plusLbl">
+            <input type="radio" name="plus" id="plus_no" value="no" checked><label for="plus_no">לבד</label>
+            <input type="radio" name="plus" id="plus_yes" value="yes"><label for="plus_yes">כן, אנחנו שניים</label>
+          </div>
+        </div>
+        <div class="plus" id="plusBox" hidden>
+          <div class="field" id="w_pname">
+            <label for="plus_name">שם מלא של בן/בת הזוג</label>
+            <input type="text" id="plus_name" name="plus_name" autocomplete="off">
+            <div class="err" hidden>נא למלא שם מלא</div>
+          </div>
+          <div class="row2">
+            <div class="field" id="w_pphone">
+              <label for="plus_phone">הטלפון שלו/ה</label>
+              <input type="tel" id="plus_phone" name="plus_phone" inputmode="tel" autocomplete="off" dir="ltr" style="text-align:right">
+              <div class="err" hidden>מספר נייד לא תקין</div>
+            </div>
+            <div class="field" id="w_pemail">
+              <label for="plus_email">האימייל שלו/ה</label>
+              <input type="email" id="plus_email" name="plus_email" autocomplete="off" dir="ltr" style="text-align:right">
+              <div class="err" hidden>כתובת מייל לא תקינה</div>
+            </div>
+          </div>
+        </div>
+        <div class="formerr" id="formErr" hidden></div>
+        <button type="submit" id="go">שמרו לי מקום</button>
+        <p class="fine">הפרטים נשמרים אצל LRC בלבד, לצורך הערב.</p>
+      </form>
+    </div>
+
+    <div class="card thanks" id="thanks" hidden>
+      <svg class="glass" viewBox="0 0 48 64" aria-hidden="true"><path d="M10 4h28c0 14-4 24-14 26C14 28 10 18 10 4z" fill="none" stroke="#C9AD78" stroke-width="2"/><path d="M12.5 14h23c-1 8-4.5 13-11.5 14-7-1-10.5-6-11.5-14z" fill="#5C5878"/><path d="M24 30v24M14 58h20" stroke="#C9AD78" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="eyebrow" id="tEyebrow">נרשמת</div>
+      <h2 id="tTitle">נתראה ביקב!</h2>
+      <p id="tText">שלחנו לך אישור למייל עם כל הפרטים. מחכים להרים איתך כוסית.</p>
+      <div class="acts" id="tActs">
+        <a class="btn gold" id="calBtn" target="_blank" rel="noopener">הוספה ליומן</a>
+        <a class="btn" id="wazeBtn" target="_blank" rel="noopener">ניווט ב-Waze</a>
+      </div>
+      <div class="friend">
+        <b>יש לך חבר שתמיד שואל מה עושים עם הכסף?</b>
+        <p>תעביר/י לו את ההזמנה לפני שהמקומות נגמרים.</p>
+        <a class="btn gold" id="shareBtn" target="_blank" rel="noopener">שליחה בוואטסאפ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="col">
+  <div class="tag">הנדסת עושר</div>
+  <div>LRC · Long Range Capital · office@lrc.co.il</div>
+</footer>
+
+<script>
+var EVENT = {
+  place: 'יקב בנימינה',
+  address: 'בנימינה',
+  api: 'https://script.google.com/macros/s/AKfycbztbhk3SdXdAMg2FH3XzDy31uJCX5M5ZHO1Q1BmmPXXaE3uNX2lu3usv7Ir0-8Dc8p6ag/exec',
+  url: location.origin + location.pathname,
+  ref: (new URLSearchParams(location.search).get('ref') || '').slice(0, 80)
+};
+document.getElementById('placeShort').textContent = EVENT.place;
+
+var $ = function(id){ return document.getElementById(id); };
+$('goReg').addEventListener('click', function(e){
+  e.preventDefault();
+  $('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(function(){ $('full_name').focus({ preventScroll: true }); }, 600);
+});
+var plusBox = $('plusBox');
+Array.prototype.forEach.call(document.querySelectorAll('input[name=plus]'), function(r){
+  r.addEventListener('change', function(){
+    var yes = $('plus_yes').checked;
+    plusBox.hidden = !yes;
+    if (yes) setTimeout(function(){ $('plus_name').focus(); }, 50);
+  });
+});
+
+function setBad(id, bad){ var w = $(id); w.classList.toggle('bad', bad); w.querySelector('.err').hidden = !bad; }
+function cleanPhone(p){ p = String(p).replace(/[^\d+]/g,''); if (p.indexOf('+972') === 0) p = '0' + p.slice(4); return p.replace(/\D/g,''); }
+
+$('f').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var d = {
+    full_name: $('full_name').value.trim(),
+    phone: cleanPhone($('phone').value),
+    email: $('email').value.trim(),
+    plus: $('plus_yes').checked,
+    plus_name: $('plus_name').value.trim(),
+    plus_phone: cleanPhone($('plus_phone').value),
+    plus_email: $('plus_email').value.trim(),
+    ref: EVENT.ref
+  };
+  var ok = true, first = null;
+  function chk(id, bad, inp){ setBad(id, bad); if (bad){ ok = false; first = first || inp; } }
+  chk('w_name', d.full_name.split(/\s+/).length < 2 || d.full_name.length < 4, 'full_name');
+  chk('w_phone', !/^05\d{8}$/.test(d.phone), 'phone');
+  chk('w_email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email), 'email');
+  if (d.plus) {
+    chk('w_pname', d.plus_name.split(/\s+/).length < 2 || d.plus_name.length < 4, 'plus_name');
+    chk('w_pphone', !/^05\d{8}$/.test(d.plus_phone) || d.plus_phone === d.phone, 'plus_phone');
+    chk('w_pemail', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.plus_email), 'plus_email');
+  } else { setBad('w_pname', false); setBad('w_pphone', false); setBad('w_pemail', false); }
+  if (!ok){ $(first).focus(); return; }
+
+  var btn = $('go'); btn.disabled = true; btn.textContent = 'שומרים...'; $('formErr').hidden = true;
+  var done = function(res){ showThanks(d, res || {}); };
+  var fail = function(){
+    btn.disabled = false; btn.textContent = 'שמרו לי מקום';
+    $('formErr').textContent = 'משהו לא עבר. נסו שוב, או שלחו לנו וואטסאפ ל-053-3722588.';
+    $('formErr').hidden = false;
+  };
+  fetch(EVENT.api, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(d), redirect: 'follow' })
+    .then(function(r){ return r.json(); })
+    .then(function(res){ if (!res || res.status === 'error') throw new Error('x'); done(res); })
+    .catch(fail);
+});
+
+function showThanks(d, res){
+  var first = d.full_name.split(/\s+/)[0];
+  if (res.status === 'dup') {
+    $('tEyebrow').textContent = 'כבר רשומים';
+    $('tTitle').textContent = first + ', המקום שלך שמור';
+    $('tText').textContent = 'המספר הזה כבר רשום אצלנו, אז הכול מסודר. נתראה ביקב.';
+  } else if (res.status === 'wait') {
+    $('tEyebrow').textContent = 'רשימת המתנה';
+    $('tTitle').textContent = 'תודה, ' + first;
+    $('tText').textContent = 'כל המקומות כבר נתפסו, ורשמנו אותך לרשימת ההמתנה. אם יתפנה מקום, נתקשר אליך ראשון.';
+    $('tActs').hidden = true;
+  } else {
+    $('tTitle').textContent = 'נתראה ביקב, ' + first + '!';
+    $('tText').textContent = (d.plus ? 'שמרנו מקום לך ול' + d.plus_name.split(/\s+/)[0] + '. ' : '') + 'אישור עם כל הפרטים בדרך למייל' + (d.plus ? ' של שניכם' : ' שלך') + '. מחכים להרים איתך כוסית.';
+  }
+  var cal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent('ערב VIP של LRC · ' + EVENT.place)
+    + '&dates=20261217T154500Z/20261217T190000Z'
+    + '&details=' + encodeURIComponent('התכנסות 17:45 · ארוחת ערב, יין והרצאות. LRC · הנדסת עושר')
+    + '&location=' + encodeURIComponent(EVENT.place + ', ' + EVENT.address);
+  $('calBtn').href = cal;
+  $('wazeBtn').href = 'https://waze.com/ul?q=' + encodeURIComponent(EVENT.place + ' ' + EVENT.address) + '&navigate=yes';
+  var link = EVENT.url + '?ref=' + encodeURIComponent(d.full_name);
+  var msg = 'היי, נרשמתי לערב VIP של LRC ביקב בנימינה, ב-17.12 (חמישי, 17:45). ארוחת ערב, יין חופשי ושלושה מרצים על השקעות. חשבתי שזה בדיוק בשבילך 🍷\nהרשמה כאן: ' + link;
+  $('shareBtn').href = 'https://wa.me/?text=' + encodeURIComponent(msg);
+  $('formCard').hidden = true; $('thanks').hidden = false;
+  $('register').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
