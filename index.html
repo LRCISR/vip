@@ -53,6 +53,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,7vw,34px);line-
 .perks{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .perk{background:var(--card);border:1px solid var(--line);padding:16px 16px 15px}
 .perk b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.25}
+.perk:last-child:nth-child(odd){grid-column:1/-1}
 .perk span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
 
 .prog{list-style:none;padding:0;margin:6px 0 0;border-top:1px solid var(--line)}
@@ -150,7 +151,6 @@ footer .tag{font-family:var(--serif);font-size:19px;color:var(--plum)}
       <li class="perk"><b>ארוחת ערב ויין חופשי</b><span>באווירה של יקב</span></li>
       <li class="perk"><b>שלושה מרצים אורחים</b><span>אמיר כהנוביץ, ערן מועלם, אתי בר-לב</span></li>
       <li class="perk"><b>עמדת צילום</b><span>שטיח אדום, כי מגיע לכם</span></li>
-      <li class="perk"><b>חלה לשבת</b><span>יוצאים הביתה עם משהו טוב</span></li>
     </ul>
   </section>
 
@@ -170,7 +170,7 @@ footer .tag{font-family:var(--serif);font-size:19px;color:var(--plum)}
       <li class="key"><time>19:15</time><div><div class="t">ערן מועלם</div><div class="d">מקרקע לערך: איפה מסתתרות ההזדמנויות בעולם הקרקעות והתכנון</div></div></li>
       <li class="key"><time>19:45</time><div><div class="t">אתי בר-לב</div><div class="d">השקעות נדל״ן בקפריסין</div></div></li>
       <li class="key"><time>20:15</time><div><div class="t">יואב מרקוביץ׳</div><div class="d">סוגרים עם תוכנית כלכלית</div></div></li>
-      <li><time>20:45</time><div><div class="t">קינוחים ושבת שלום</div><div class="d">וחלה לשבת לכל משפחה</div></div></li>
+      <li><time>20:45</time><div><div class="t">קינוחים ושבת שלום</div></div></li>
     </ol>
   </section>
 
